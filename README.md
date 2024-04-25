@@ -7,4 +7,6 @@ The design aethetic comes from Jordan Belson's Allures, to introduce a trance li
 
 The website was built solely using HTML and CSS along with p5.js for all sketches/animations. 
 
+## Here is a link to the final sketch : https://editor.p5js.org/nsher3/full/NZ0PKOD_y
+
 
