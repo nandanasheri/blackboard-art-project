@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/116b5f4dbd.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <style>
+      html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Open Sans", sans-serif;
+    }
+    canvas {
+      display: block;
+    }
+
+    .navbar-container {
+      display: flex;
+      width: 15vw;
+      top: 0;
+      left: 0;
+      background-color: #262626;
+    }
+
+    .navbar-items {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 200px;
+    }
+
+    .navbar-li {
+      display: block;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-size : 1rem;
+      border-radius : 1rem;
+      height: 2rem;
+    }
+
+    .navbar-li:hover {
+      background-color: #555;
+      color: white;
+    }
+
+    #nav-icons {
+      margin-right:0.5rem;
+    }
+
+    .main-right {
+    /*   background-color: red; */
+      width: 85%;
+      margin:0;
+      padding:0;
+    }
+
+    .main-title {
+      background-color: #ffff;
+      width: 100%;
+      padding:0.5rem;
+    }
+
+    .main-title > h3 {
+      color : black;
+      font-weight: 500;
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .sub-title {
+      background-color: white;
+      width: 98%;
+      padding:0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sub-icon-container {
+      display:flex;
+    }
+
+    .sub-icon-container > i{
+      font-size: 2rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .sub-icon-container > h2{
+      margin:0;
+      padding:0;
+    }
+    .sub-icon-container > h4{
+      padding:0;
+      margin:0;
+    }
+
+    .search-container {
+      display:flex;
+      justify-content:space-between;
+      background-color:#f8f8f8;
+    }
+
+    .search-sub-container {
+      display:flex;
+      justify-content:space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .filter-container {
+      display:flex;
+      justify-content:space-between;
+      align-items: center;
+    }
+
+    .search-input {
+      border-radius:5px;
+      height: 2rem;
+      border-style:solid;
+      border-color:gray;
+    }
+
+    .search-input:focus {
+      border: 3px solid #2fa6ff;
+
+    }
+
+    .term-name {
+      color:white;
+      padding: 0.5rem;
+    }
+
+    .tile-holder {
+      display:flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    /*   background-color: blue; */
+    }
+
+    .tile-container {
+      display:flex;
+      flex-direction:column;
+      box-shadow: 0 1px 2px rgba(199,65,231,0.5);
+      transition: box-shadow 0.3s ease, transform 0.3s ease; 
+
+    }
+
+    .tile-container:hover {
+      box-shadow: 0 0 10px 5px rgba(189,53,212,0.5);
+      transform: translateY(-10px);
+    }
+
+    .tile-sketch {
+      width: auto;
+      height: 60%;
+      background: black;
+      margin: 0.5rem;
+    }
+
+    .tile-content{
+      font-weight: 600;
+      font-size: 1rem;
+      padding-right:0.5rem;
+      margin:0;
+      margin-left:1rem;
+      text-wrap:wrap;
+      text-decoration:none;
+    }
+
+    #sketch {
+      position:fixed;
+      left: 0;
+      top: 0;
+      z-index: -1000;
+      width: 83vw;
+      margin:0;
+      padding:0;
+    }
+
+    .mandala-main{
+      margin: 0;
+      padding: 0;
+      font-family: "Open Sans", sans-serif;
+    }
+    </style>
+
+  </head>
+  <body>
+    <canvas id="sketch" class="p5Canvas" style="width: 642px; height: 551px;" width="642" height="551"></canvas>
+
+    <main>
+      <div style="display: flex; margin:0; padding:0;">
+        <div class="navbar-container">
+          <ul class="navbar-items">
+            <li id="nav_mandala" style="margin-left:2rem;"></li>
+            <li><a class = "navbar-li" style="color: #ffe862" href="#">
+                  <i class="fa-solid fa-house" style="margin-right:0.5rem;"></i>Home
+              </a></li>
+            <li><a class = "navbar-li" style="color: #01dcff" href="#">
+              <i class="fa-solid fa-user" style="margin-right:0.5rem;"></i>
+              Nandana</a></li>
+            <li><a class = "navbar-li" style="color: #ffa2d2" href="#">
+              <i class="fa-solid fa-globe" style="margin-right:0.5rem;"></i>
+              Thought Stream</a></li>
+            <li><a class = "navbar-li" style="color: #aa71f1; background-color: #555; " href="#">
+              <i class="fa-solid fa-brain" style="margin-right:0.5rem;"></i>
+              My Thoughts</a></li>
+            <li><a class = "navbar-li" style="color: #fe9b24" href="#">
+              <i class="fa-regular fa-calendar-days" style="margin-right:0.5rem;"></i>
+              Calendar</a></li>
+            <li><a class = "navbar-li" style="color: #58ff1c" href="#">
+              <i class="fa-solid fa-pen" style="margin-right:0.5rem;"></i>
+              Therapy</a></li>
+          </ul>
+        </div>
+        
+        <div class="main-right">
+          <h3 class="term-name">I love adulting and doing my taxes</h3>
+          <div id="multi_mandala"></div>
+          
+        </div>
+        <!--this div is the main right one-->
+        
+      </div> 
+      <!--    this is the whole div starts right at the top    -->
+    </main>
+  </body>
+  <script>
+    let multi_mandala = function(p) {
+    let petals = 30;
+    let ang;
+
+    p.setup = function() {
+      p.createCanvas(1100, 400, p.WEBGL).parent("multi_mandala");
+    }
+
+    p.draw = function() {
+      p.background("#262626");
+      mandala();
+    }
+
+    function mandala() {
+      p.angleMode(p.DEGREES);
+      p.colorMode(p.HSB);
+
+      ang = 360/petals;
+      let randx = p.width/8;
+
+      for (let j = 10; j > 0; j--) {
+        let ly = j/10;
+        let x1 = p.int(p.random(randx*ly, (randx + 20)*ly));
+        let x4 = p.int(p.random((randx + 40)*ly, (randx + 55)*ly));
+        let x2 = p.int(p.random((randx + 5)*ly, (randx + 25)*ly));
+        let y2 = p.int(p.random(0, (p.height/10)*ly));
+        let x3 = p.int(p.random((randx + 20)*ly, (randx + 40)*ly));
+        let y3 = p.int(p.random(0, (p.width/10)*ly));
+
+        let hue = p.random(256);
+        let sat = p.random(70, 100);
+        let bright = p.random(70, 100);
+
+        p.stroke(hue, sat, bright);
+        p.strokeWeight(3);
+        p.fill(hue, sat, bright);
+
+        //creating petals
+        for (let i = 0; i < petals; i++) {
+          p.beginShape();
+            p.curveVertex(x1, 0);
+            p.curveVertex(x1, 0);
+            p.curveVertex(x2, y2);
+            p.curveVertex(x3, y3);
+            p.curveVertex(x4, 0);
+            p.curveVertex(x4, 0);
+          p.endShape();
+
+          p.beginShape();
+            p.curveVertex(x1, 0);
+            p.curveVertex(x1, 0);
+            p.curveVertex(x2, -y2);
+            p.curveVertex(x3, -y3);
+            p.curveVertex(x4, 0);
+            p.curveVertex(x4, 0);
+          p.endShape();
+          p.rotate(ang);
+        }
+      }
+    }
+  };
+
+  new p5(multi_mandala);
+  </script>
+</html>

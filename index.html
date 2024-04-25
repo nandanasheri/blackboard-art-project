@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/116b5f4dbd.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <canvas id="sketch" class="p5Canvas" style="width: 642px; height: 551px;" width="642" height="551"></canvas>
+
+    <main>
+      <div style="display: flex; margin:0; padding:0;">
+        <div class="navbar-container">
+          <ul class="navbar-items">
+            <li id="nav_mandala" style="margin-left:2rem;"></li>
+            <li><a class = "navbar-li" style="color: #ffe862" href="#">
+                  <i class="fa-solid fa-house" style="margin-right:0.5rem;"></i>Home
+              </a></li>
+            <li><a class = "navbar-li" style="color: #01dcff" href="#">
+              <i class="fa-solid fa-user" style="margin-right:0.5rem;"></i>
+              Nandana</a></li>
+            <li><a class = "navbar-li" style="color: #ffa2d2" href="#">
+              <i class="fa-solid fa-globe" style="margin-right:0.5rem;"></i>
+              Thought Stream</a></li>
+            <li><a class = "navbar-li" style="color: #aa71f1; background-color: #555; " href="#">
+              <i class="fa-solid fa-brain" style="margin-right:0.5rem;"></i>
+              My Thoughts</a></li>
+            <li><a class = "navbar-li" style="color: #fe9b24" href="#">
+              <i class="fa-regular fa-calendar-days" style="margin-right:0.5rem;"></i>
+              Calendar</a></li>
+            <li><a class = "navbar-li" style="color: #58ff1c" href="#">
+              <i class="fa-solid fa-pen" style="margin-right:0.5rem;"></i>
+              Therapy</a></li>
+          </ul>
+        </div>
+        
+        <div class="main-right">
+          
+          <div class="main-title">
+            <h3>My Thoughts</h3>
+            <hr>
+          
+            <div class="sub-title">
+              <div class="sub-icon-container">     
+                <i class="fa-solid fa-arrow-left"></i>
+                <h4 style="font-weight:300">Continuous Thoughts</h4>
+              </div>
+              <div class="sub-icon-container">
+                <h2 style="font-weight:300; font-size:2rem">Current Thoughts</h2>
+                <i class="fa-solid fa-caret-down"></i>
+              </div>
+              <div class="sub-icon-container">
+                <h4 style="font-weight:300">Upcoming Thoughts</h4>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+            
+            <hr>
+            <div class="search-container">
+              <div class="search-sub-container">
+                <div>
+                  <i style="margin-left: 0.5rem" class="fa-solid fa-bars"></i>
+                </div>
+                <input class="search-input" type="text" id="search" placeholder="Search your Thoughts">
+                <h4>Filter</h4>
+                <select class="search-input" name="thoughts" id="thoughts">
+                  <option class="search-input" value="overthink">Thoughts I overthink</option>
+                  <option class="search-input" value="deflect">Thoughts I deflect</option>
+                  <option class="search-input" value="cope">Thoughts I cope with</option>
+                  <option class="search-input" value="spiral">Thoughts I spiral with</option>
+                </select>
+              </div>
+              <div class="filter-container">
+                <div style="display:flex; padding: 0.5rem;">
+                  <div style="background-color:white; display: flex; align-items:center;">
+                    <h4 style="display:inline">25</h4>
+                    <i style="margin-left:0.5rem; margin-right:0.5rem" class="fa-solid fa-caret-down"></i>
+                  </div>
+                </div>
+                <h4>items per page</h4>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="term-name">Spring 2024</h3>
+          
+          <div class="tile-holder">
+            
+            <div class="tile-container" style="background-color: #e96efa;">
+              <a style="text-decoration:none;" href= "mandala.html">
+              <div class = "tile-sketch" id="mandala">
+              </div>
+              <h4 class="tile-content" style="font-size: 0.8rem; color:#4B4356; font-weight:500;">2024.spring.thought.133</h4>
+              <h4 class="tile-content">Intro to Folding Laundry</h4>
+              <h4 class="tile-content" style="font-size:1rem; color:#4B4356;font-weight:400;">Deflecting</h4>
+              <hr style="border-color:gray; color:gray; width: 90%;">
+              <div style="display:flex; justify-content: space-between;">
+                <div style="width:50%;">
+                  <h4 class="tile-content" style="font-size: 1rem; color:#4B4356; margin-bottom:0.5rem;">
+                    Nandana Sheri</h4>
+                </div>
+                <div style="width:30%;">
+                  <i style="margin-right:1rem;" class="fa-solid fa-circle-info"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+              </a>
+            </div>
+            
+            <div class="tile-container" style="background-color:#acffb5
+">
+              <a style="text-decoration:none;" href="perlin.html">
+              <div class = "tile-sketch" id="staticlines">
+              </div>
+              <h4 class="tile-content" style="font-size: 0.8rem; color:#4B4356; font-weight:500; margin-top: 1.5rem; ">2024.spring.thought.4727</h4>
+              <h4 class="tile-content">Art of Mispronouncing 'Nandana'</h4>
+              <h4 class="tile-content" style="font-size:1rem; color:#4B4356;font-weight:400;">Coping</h4>
+              <hr style="border-color:gray; color:gray; width: 90%;">
+              <div style="display:flex; justify-content: space-between;">
+                <div style="width:50%;">
+                  <h4 class="tile-content" style="font-size: 1rem; color:#4B4356; margin-bottom:0.5rem;">
+                    Nandana Sheri</h4>
+                </div>
+                <div style="width:30%;">
+                  <i style="margin-right:1rem;" class="fa-solid fa-circle-info"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+              </a>
+            </div>
+            
+            <div class="tile-container" style="background-color:#9fd2e4">
+              <a style="text-decoration:none" href="spiral.html">
+              <div class = "tile-sketch" id="atom">
+              </div>
+              <h4 class="tile-content" style="font-size: 0.8rem; color:#4B4356; font-weight:500; margin-top: 0.5rem;">2024.spring.thought.426</h4>
+              <h4 class="tile-content">Doing the bare minimum</h4>
+              <h4 class="tile-content"> and getting an A</h4>
+              <h4 class="tile-content" style="font-size:1rem; color:#4B4356;font-weight:400;">Coping</h4>
+              <hr style="border-color:gray; color:gray; width: 90%;">
+              <div style="display:flex; justify-content: space-between;">
+                <div style="width:50%;">
+                  <h4 class="tile-content" style="font-size: 1rem; color:#4B4356; margin-bottom:0.5rem;">
+                    Nandana Sheri</h4>
+                </div>
+                <div style="width:30%;">
+                  <i style="margin-right:1rem;" class="fa-solid fa-circle-info"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+              </a>
+            </div>
+            
+            
+            <div class="tile-container" style="background-color:#d9fbaa">
+              <div class = "tile-sketch" id="mini_spiro">
+              </div>
+              <h4 class="tile-content" style="font-size: 0.8rem; color:#4B4356; font-weight:500;">2024.spring.thought.686016</h4>
+              <h4 class="tile-content">Principles of Immigration System</h4>
+              <h4 class="tile-content" style="font-size:1rem; color:#4B4356;font-weight:400;">Spiraling</h4>
+              <hr style="border-color:gray; color:gray; width: 90%;">
+              <div style="display:flex; justify-content: space-between;">
+                <div style="width:50%;">
+                  <h4 class="tile-content" style="font-size: 1rem; color:#4B4356; margin-bottom:0.5rem;">
+                    Nandana Sheri</h4>
+                </div>
+                <div style="width:30%;">
+                  <i style="margin-right:1rem;" class="fa-solid fa-circle-info"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tile-container" style="background-color:#70eed9
+">
+              <div class = "tile-sketch" id="pointlight">
+              </div>
+              <h4 class="tile-content" style="font-size: 0.8rem; color:#4B4356; font-weight:500;">2024.spring.thought.60607</h4>
+              <h4 class="tile-content">Burnout 101</h4>
+              <h4 class="tile-content" style="font-size:1rem; color:#4B4356;font-weight:400;">Coping</h4>
+              <hr style="border-color:gray; color:gray; width: 90%;">
+              <div style="display:flex; justify-content: space-between;">
+                <div style="width:50%;">
+                  <h4 class="tile-content" style="font-size: 1rem; color:#4B4356; margin-bottom:0.5rem;">
+                    Nandana Sheri</h4>
+                </div>
+                <div style="width:30%;">
+                  <i style="margin-right:1rem;" class="fa-solid fa-circle-info"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tile-container" style="background-color:#fec27c
+">
+              <div class = "tile-sketch" id="lineflower">
+              </div>
+              <h4 class="tile-content" style="font-size: 0.8rem; color:#4B4356; font-weight:500; margin-top: 0.5rem;">2024.spring.thought.2430</h4>
+              <h4 class="tile-content">Intro to Academic Validation</h4>
+              <h4 class="tile-content" style="font-size:1rem; color:#4B4356;font-weight:400;">Projecting</h4>
+              <hr style="border-color:gray; color:gray; width: 90%;">
+              <div style="display:flex; justify-content: space-between;">
+                <div style="width:50%;">
+                  <h4 class="tile-content" style="font-size: 1rem; color:#4B4356; margin-bottom:0.5rem;">
+                    Nandana Sheri</h4>
+                </div>
+                <div style="width:30%;">
+                  <i style="margin-right:1rem;" class="fa-solid fa-circle-info"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>  <!-- flexbox for all tiles-->
+          
+          
+        </div>
+        <!--this div is the main right one-->
+        
+      </div> 
+      <!--    this is the whole div starts right at the top    -->
+    </main>
+  </body>
+  <script>
+    let main_bg = function (p) {
+      let x;
+      let y;
+      let r;
+      let g;
+      let b;
+      let pg;
+
+      // background referenced from kevinworkman.com
+
+      p.setup = function () {
+        // set pixel density so that it's more fuzzy and pixelated
+        p.pixelDensity(1);
+        const cnv = p.createCanvas(p.windowWidth, p.windowHeight);
+        cnv.id('sketch');
+
+        const displayRatio = p.windowWidth / p.windowHeight;
+        pg = p.createGraphics(100 * displayRatio, 100);
+        // start at the center of the page
+        x = pg.width / 2;
+        y = pg.height / 2;
+        // random colors to start with
+        r = p.random(0, 255);
+        g = p.random(0, 255);
+        b = p.random(0, 255);
+
+        // this stays pixelated instead of having it be 
+        pg.noSmooth();
+        p.noSmooth();
+      }
+
+      p.draw = function() {
+        // where to draw the next pixel
+
+        let nextX = x + p.random(-5, 5);
+        let nextY = y + p.random(-5, 5);
+
+        // ensure that the nextX and nextY are constrained between  0 and width or height
+        nextX = p.constrain(nextX, 0, pg.width);
+        nextY = p.constrain(nextY, 0, pg.height);
+
+        // similarly for rgb
+        r += p.random(-10, 10);
+        g += p.random(-10, 10);
+        b += p.random(-10, 10);
+        r = p.constrain(r, 0, 255);
+        g = p.constrain(g, 0, 255);
+        b = p.constrain(b, 0, 255);
+
+        pg.stroke(r, g, b);
+        pg.line(nextX, nextY, x, y);
+
+        // this actually displays the graphic itself
+        p.image(pg, 0, 0, p.width, p.height);
+
+        x = nextX;
+        y = nextY;
+      }
+
+       p.mousePressed = function() {
+        x = pg.width * (p.mouseX / p.width);
+        y = pg.height * (p.mouseY / p.height);
+        r = p.random(0, 255);
+        g = p.random(0, 255);
+        b = p.random(0, 255);
+      }
+    };
+    new p5(main_bg); // Correct instance mode initialization
+  </script>
+  <script>
+      let mandala = function(p) {
+      let x1, x2, x3, x4, y2, y3;
+      let petals = 40;
+      let ang;
+
+      p.setup = function() {
+        p.createCanvas(270, 250, p.WEBGL).parent("mandala");;
+        p.angleMode(p.DEGREES);
+        p.colorMode(p.HSB);
+
+        ang = 360 / petals;
+        let randx = 270 / 8;
+
+        for (let j = 12; j > 0; j--) {
+          let ly = j / 10;
+          x1 = p.int(p.random(randx * ly, (randx + 20) * ly));
+          x4 = p.int(p.random((randx + 40) * ly, (randx + 55) * ly));
+          x2 = p.int(p.random((randx + 5) * ly, (randx + 25) * ly));
+          y2 = p.int(p.random(0, (250 / 10) * ly));
+          x3 = p.int(p.random((randx + 20) * ly, (randx + 40) * ly));
+          y3 = p.int(p.random(0, (270 / 10) * ly));
+
+          let hue = p.random(256);
+          let sat = p.random(70, 100);
+          let bright = p.random(70, 100);
+
+          p.stroke(hue, sat, bright);
+          p.strokeWeight(3);
+          p.fill(hue, sat, bright);
+
+          // Creating petals
+          for (let i = 0; i < petals; i++) {
+            p.beginShape();
+            p.curveVertex(x1, 0);
+            p.curveVertex(x1, 0);
+            p.curveVertex(x2, y2);
+            p.curveVertex(x3, y3);
+            p.curveVertex(x4, 0);
+            p.curveVertex(x4, 0);
+            p.endShape();
+
+            p.beginShape();
+            p.curveVertex(x1, 0);
+            p.curveVertex(x1, 0);
+            p.curveVertex(x2, -y2);
+            p.curveVertex(x3, -y3);
+            p.curveVertex(x4, 0);
+            p.curveVertex(x4, 0);
+            p.endShape();
+            p.rotate(ang);
+          }
+        }
+      };
+    };
+    new p5(mandala);
+  </script>
+  <script>
+      let nav_mandala = function(p) {
+      let x1, x2, x3, x4, y2, y3;
+      let petals = 40;
+      let ang;
+
+      p.setup = function() {
+        p.createCanvas(100, 100, p.WEBGL).parent("nav_mandala");;
+        p.angleMode(p.DEGREES);
+        p.colorMode(p.HSB);
+
+        ang = 360 / petals;
+        let randx = 100 / 8;
+
+        for (let j = 8; j > 0; j--) {
+          let ly = j / 10;
+          x1 = p.int(p.random(randx * ly, (randx + 20) * ly));
+          x4 = p.int(p.random((randx + 40) * ly, (randx + 55) * ly));
+          x2 = p.int(p.random((randx + 5) * ly, (randx + 25) * ly));
+          y2 = p.int(p.random(0, (100 / 10) * ly));
+          x3 = p.int(p.random((randx + 20) * ly, (randx + 40) * ly));
+          y3 = p.int(p.random(0, (100 / 10) * ly));
+
+          let hue = p.random(256);
+          let sat = p.random(70, 100);
+          let bright = p.random(70, 100);
+
+          p.stroke(hue, sat, bright);
+          p.strokeWeight(3);
+          p.fill(hue, sat, bright);
+
+          // Creating petals
+          for (let i = 0; i < petals; i++) {
+            p.beginShape();
+            p.curveVertex(x1, 0);
+            p.curveVertex(x1, 0);
+            p.curveVertex(x2, y2);
+            p.curveVertex(x3, y3);
+            p.curveVertex(x4, 0);
+            p.curveVertex(x4, 0);
+            p.endShape();
+
+            p.beginShape();
+            p.curveVertex(x1, 0);
+            p.curveVertex(x1, 0);
+            p.curveVertex(x2, -y2);
+            p.curveVertex(x3, -y3);
+            p.curveVertex(x4, 0);
+            p.curveVertex(x4, 0);
+            p.endShape();
+            p.rotate(ang);
+          }
+        }
+      };
+    };
+    new p5(nav_mandala);
+  </script>
+  <script>
+      let mini_spiro = function(p) {
+      let spirot = 360 / 30;
+      let off = 0;
+      let colors = ['#ffbe7c', '#e86df9', '#94ffbd', '#f288ac', '#e6fca8', '#faf79d', '#89ffbf', '#f282bc']
+      p.setup = function() {
+        p.createCanvas(270, 250, p.WEBGL).parent("mini_spiro");
+        p.spirograph();
+      };
+
+      p.spirograph = function() {
+        p.angleMode(p.DEGREES);
+        p.stroke(255);
+        p.strokeWeight(2);
+        p.noFill();
+        p.rotate(off);
+
+        for (let i = 0; i < 30; i++) {
+          p.rotate(spirot);
+          p.ellipse(0 + off, 0 + off, 50, 200);
+          p.stroke(colors[p.int(p.random(0,8))])
+        }
+        off += 2;
+      };
+    };
+   new p5(mini_spiro);
+  </script>
+  <script>
+    let pointLight = function(p) {
+    let locZ = 0;
+    let locX = p.width / 2;
+    let locY = p.height / 2;
+
+    p.setup = function() {
+      p.createCanvas(270, 230, p.WEBGL).parent("pointlight");
+    };
+
+    p.draw = function() {
+      p.Light();
+    };
+
+    p.Light = function() {
+      p.colorMode(p.RGB);
+      // move your mouse to change light position
+      let lightX = p.width / 2;
+      let lightY = p.height / 2;
+      p.pointLight(250, 250, 250, 0, 0, 400);
+      lightX += 10;
+      lightY += 10;
+      locZ += 0.5;
+      if (locZ > 250 ) {
+        locZ= 0
+      }
+      p.noStroke();
+      p.sphere(150 + locZ);
+    };
+  };
+
+  new p5(pointLight);
+  </script>
+  <script>
+    let staticlines = function(p) {
+    p.setup = function() {
+      p.createCanvas(270, 250).parent('staticlines');
+    };
+
+    p.draw = function() {
+      p.background("black");
+      p.noFill();
+      p.strokeWeight(3);
+      p.stroke(p.random(255), p.random(255), p.random(255));
+      p.beginShape();
+      for (let i = 0; i < p.width; i += 10) {
+        p.vertex(i, p.random(p.height));
+      }
+      p.endShape();
+    };
+    };
+    new p5(staticlines);
+
+  </script>
+  
+  <script>
+    let lineflower = function(p) {
+    let lfx = 0;
+    let lfy = 0;
+    let lfrot = 0.2;
+    let colorset = ['#8f00f7', '#eb0349', '#42007f', '#a3c710', '#01fc01', '#b31906', '#48aa14'];
+
+    p.setup = function() {
+      p.createCanvas(250, 220, p.WEBGL).parent("lineflower");
+      p.background(0);
+    };
+
+    p.draw = function() {
+      p.lineflower();
+    };
+
+    p.lineflower = function() {
+      p.stroke(colorset[p.int(p.random(7))]);
+      p.strokeWeight(3);
+      p.rotate(lfrot);
+      p.line(lfx, 0, lfy, 50);
+      lfx += 1;
+      lfy += 1;
+      lfrot += 0.5;
+      if (lfx > 220) {
+        lfx = 0;
+        p.background(0);
+      }
+      if (lfy > 220) {
+        lfy = 0;
+        p.background(0);
+      }
+      if (lfrot > 220) {
+        lfrot = 0;
+        p.background(0);
+      }
+    };
+  };
+
+  new p5(lineflower);
+  </script>
+  <script>
+    let atom = function(p) {
+    let atomOff = 0;
+    let colorsall = ['#fc8404', '#fbe204', '#6404c4', '#6601ff', '#ae7bfe', '      #62008b'];
+
+    p.setup = function() {
+      p.createCanvas(250, 250, p.WEBGL).parent("atom");
+    };
+
+    p.draw = function() {
+      p.colorMode(p.RGB);
+      p.background(0);
+      p.angleMode(p.DEGREES);
+      p.stroke(colorsall[p.int(p.random(6))]);
+      p.strokeWeight(3);
+      p.fill('white');
+      p.ellipse(0, 0, 30, 30);
+      p.noFill();
+      for (let i = 0; i < 8; i++) {
+        p.rotate(atomOff);
+        p.ellipse(0, 0, 60, 200);
+      }
+      atomOff += 1;
+    };
+  };
+
+  new p5(atom);
+  </script>
+</html>
